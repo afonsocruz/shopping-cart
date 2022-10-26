@@ -1,0 +1,10 @@
+.content-page {
+  margin: 32px auto;
+  .products {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    .product-card {
+      width: 250px;
+    }
+  }
+}

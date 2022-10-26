@@ -1,32 +1,13 @@
-import { api } from "../api"
+import { api } from "../api";
+import { AxiosResponse } from "axios";
+import { ProductsType } from "../../types/products";
 
-type Products = {
-  id: number,
-  title: string,
-  price: number,
-  category: string,
-  description: string,
-  image: string
-  rating: ProductRating
-}
+const responseBody = (response: AxiosResponse) => response.data;
 
-export type GetProductsResponse = {
-  products: Products[];
-}
+const requests = {
+  get: (url: string) => api.get(url).then(responseBody),
+};
 
-type ProductRating = {
-  rate: number,
-  count: number
-}
-
-export const getProducts = async (): Promise<GetProductsResponse> => {
-  const result = await api.get<Products[]>("/products", {
-    headers: {
-      Accept: "application/json",
-    }
-  })
-
-  console.log(result.data)
-  
-  return result.data;
-}
+export const Products = {
+  getProducts: (): Promise<ProductsType[]> => requests.get("products"),
+};
