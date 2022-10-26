@@ -1,10 +1,11 @@
-import { Products } from "./pages";
+import { Layout } from "./components";
+import Router from "./routes";
 
 const App = () => {
   return (
-    <>
-      <Products />
-    </>
+    <Layout>
+      <Router />
+    </Layout>
   );
 };
 
