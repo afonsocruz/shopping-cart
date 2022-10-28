@@ -15,6 +15,7 @@ const ProductList: React.FC = () => {
         setProducts(data);
       })
       .catch((err) => {
+        console.log(err)
         setIsError(true);
       })
       .finally(() => {
